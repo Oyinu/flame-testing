@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$FLAME Staking — Bright Flame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./staking.css">
+    <!-- Solana / Anchor dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.91.8/lib/index.iife.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="/index.html" class="nav-logo"> Bright Flame</a>
+        <a href="/index.html" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="embers" id="embers"></div>
+        <h1 class="hero-title">Stake $FLAME</h1>
+        <p class="hero-sub">LOCK · EARN · BURN BRIGHTER</p>
+
+        <!-- Wallet connect -->
+        <div class="wallet-bar">
+            <button class="btn-connect" id="connectBtn" onclick="connectWallet()">
+                Connect Phantom Wallet
+            </button>
+            <div class="wallet-info" id="walletInfo">
+                <div class="wallet-dot"></div>
+                <span class="wallet-addr" id="walletAddr">—</span>
+                <span class="wallet-bal" id="walletBal">— $FLAME</span>
+                <button onclick="disconnectWallet()"
+                    style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1;padding:0 4px;">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- Live stats -->
+        <div class="stats-row">
+            <div class="stat-card" style="animation-delay:.0s">
+                <div class="stat-card-lbl">Your Balance</div>
+                <div class="stat-card-val" id="statBalance">—</div>
+            </div>
+            <div class="stat-card" style="animation-delay:.1s">
+                <div class="stat-card-lbl">Currently Staked</div>
+                <div class="stat-card-val orange" id="statStaked">—</div>
+            </div>
+            <div class="stat-card" style="animation-delay:.2s">
+                <div class="stat-card-lbl">Est. Reward</div>
+                <div class="stat-card-val" id="statReward" style="color:#4ade80">—</div>
+            </div>
+            <div class="stat-card" style="animation-delay:.3s">
+                <div class="stat-card-lbl">Unlock Date</div>
+                <div class="stat-card-val" id="statUnlock" style="font-size:13px">—</div>
+            </div>
+        </div>
+
+        <!-- Active stake panel (shown if user has stake) -->
+        <div id="activeStakePanel" style="display:none">
+            <div class="active-stake">
+                <div class="active-stake-header">
+                    <div class="active-stake-title">Active Stake</div>
+                    <div class="active-badge">● LIVE</div>
+                </div>
+                <div class="stake-details">
+                    <div class="sd-item">
+                        <div class="sd-lbl">Staked Amount</div>
+                        <div class="sd-val orange" id="sdAmount">—</div>
+                    </div>
+                    <div class="sd-item">
+                        <div class="sd-lbl">Tier</div>
+                        <div class="sd-val" id="sdTier">—</div>
+                    </div>
+                    <div class="sd-item">
+                        <div class="sd-lbl">APY</div>
+                        <div class="sd-val orange" id="sdApy">—</div>
+                    </div>
+                    <div class="sd-item">
+                        <div class="sd-lbl">Est. Reward</div>
+                        <div class="sd-val green" id="sdReward">—</div>
+                    </div>
+                    <div class="sd-item">
+                        <div class="sd-lbl">Start Date</div>
+                        <div class="sd-val" id="sdStart" style="font-size:13px">—</div>
+                    </div>
+                    <div class="sd-item">
+                        <div class="sd-lbl">Unlock Date</div>
+                        <div class="sd-val" id="sdUnlock" style="font-size:13px">—</div>
+                    </div>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-label">
+                        <span>Staking progress</span>
+                        <span id="progressPct">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+                    </div>
+                </div>
+                <button class="btn-unstake" id="unstakeBtn" onclick="unstake()">Unstake & Claim Rewards</button>
+                <p class="unstake-note" id="unstakeNote"></p>
+            </div>
+        </div>
+
+        <!-- Stake form (hidden if user already staked) -->
+        <div id="stakePanel">
+            <h2 class="sec-title">Choose <span>Staking Tier</span></h2>
+            <p class="sec-sub">Select a lock period — longer stakes earn higher rewards</p>
+            <div class="divider"></div>
+
+            <!-- Tier cards -->
+            <div class="tiers-grid">
+                <div class="tier-card" id="tier1" onclick="selectTier(1)">
+                    <div class="tier-icon">🌱</div>
+                    <div class="tier-duration">1 Month</div>
+                    <div class="tier-apy">2%</div>
+                    <div class="tier-apy-lbl">APY</div>
+                    <div class="tier-lock">Lock: 30 days</div>
+                </div>
+                <div class="tier-card" id="tier2" onclick="selectTier(2)">
+                    <div class="tier-icon">🔥</div>
+                    <div class="tier-duration">3 Months</div>
+                    <div class="tier-apy">5%</div>
+                    <div class="tier-apy-lbl">APY</div>
+                    <div class="tier-lock">Lock: 90 days</div>
+                </div>
+                <div class="tier-card" id="tier3" onclick="selectTier(3)">
+                    <div class="tier-badge">🏆 Most Popular</div>
+                    <div class="tier-icon">⚡</div>
+                    <div class="tier-duration">6 Months</div>
+                    <div class="tier-apy">10%</div>
+                    <div class="tier-apy-lbl">APY</div>
+                    <div class="tier-lock">Lock: 180 days</div>
+                </div>
+                <div class="tier-card" id="tier4" onclick="selectTier(4)">
+                    <div class="tier-icon">💎</div>
+                    <div class="tier-duration">12 Months</div>
+                    <div class="tier-apy">15%</div>
+                    <div class="tier-apy-lbl">APY</div>
+                    <div class="tier-lock">Lock: 365 days</div>
+                </div>
+            </div>
+
+            <!-- Amount + stake button -->
+            <div class="stake-form">
+                <label class="form-label">Amount to Stake</label>
+                <div class="form-input-row">
+                    <input class="form-input" id="stakeAmount" type="number" placeholder="Enter $FLAME amount..."
+                        min="1" oninput="updateEstimate()" />
+                    <button class="max-btn" onclick="setMax()">MAX</button>
+                </div>
+
+                <div class="selected-tier-info" id="tierInfo">
+                    <div class="sti-item">Tier: <span id="infoTier">— Select a tier</span></div>
+                    <div class="sti-item">APY: <span id="infoApy">—</span></div>
+                    <div class="sti-item">Duration: <span id="infoDur">—</span></div>
+                    <div class="sti-item">Est. Reward: <span id="infoReward" style="color:#4ade80">—</span></div>
+                </div>
+
+                <button class="btn-stake" id="stakeBtn" onclick="stake()" disabled>
+                    Connect Wallet to Stake
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+
+</body>
+<script type="module" src="/staking/staking.js"></script>
+
+</html>
