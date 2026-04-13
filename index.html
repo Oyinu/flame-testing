@@ -12,6 +12,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet" />
+        <!-- Basic Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+<!-- Filled Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+<!-- Brand Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
 
 
 </head>
@@ -28,11 +34,11 @@
         </div>
         <div class="nav-links">
             <ul>
-                <li>Home</li>
-                <li>Mission & Vision</li>
-                <li>Tokenomics</li>
-                <li>Roadmap</li>
-                <li>FAQs</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mv">Mission & Vision</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#faqs">FAQs</a></li>
             </ul>
         </div>
         <div class="stake-button">
@@ -40,7 +46,7 @@
         </div>
     </nav>
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="embers" id="embers"></div>
         <div class="logo-wrap">
             <div class="logo-ring">
@@ -79,7 +85,7 @@
         </div>
     </section>
     <!--Mission & Vision-->
-    <section class="mv">
+    <section class="mv" id="mv">
         <div class="sw">
             <div class="embers" id="embers"></div>
             <div>
@@ -152,7 +158,7 @@
     </section> -->
 
     <!-- TOKENOMICS -->
-    <section class="tok-section">
+    <section class="tok-section" id="tokenomics">
         <div class="sw">
             <h2 class="sec-title">Tokenomics</h2>
             <p class="sec-sub">1,000,000,000 $FLAME total supply — fixed forever. No more, no less.</p>
@@ -265,56 +271,43 @@
     <!-- STAKING -->
     <section class="stk-section">
         <div class="sw">
-            <h2 class="sec-title">Staking <span>Tiers</span> ⚡</h2>
+            <h2 class="sec-title">Staking <span>Tiers</span></h2>
             <p class="sec-sub">Lock your $FLAME and watch rewards burn brighter — longer stakes, bigger flames.</p>
             <div class="divider"></div>
             <div class="stk-grid">
                 <div class="stk-card">
-                    <div class="stk-icon">🌱</div>
+                    <div class="stk-icon"><i class="bx bx-plant-pot" style="color: #FF4500;"></i></div>
                     <div class="stk-dur">1 Month</div>
                     <div class="stk-apy">2%</div>
                     <div class="stk-lbl">APY</div>
                 </div>
                 <div class="stk-card">
-                    <div class="stk-icon">🔥</div>
+                    <div class="stk-icon"><i class="bx bx-plant-pot" style="color: #FF4500;"></i></div>
                     <div class="stk-dur">3 Months</div>
                     <div class="stk-apy">5%</div>
                     <div class="stk-lbl">APY</div>
                 </div>
-                <div class="stk-card featured">
+                <div class="stk-card">
                     
-                    <div class="stk-icon">⚡</div>
+                    <div class="stk-icon"><i class="bx bx-plant-pot" style="color: #FF4500;"></i></div>
                     <div class="stk-dur">6 Months</div>
                     <div class="stk-apy">10%</div>
                     <div class="stk-lbl">APY</div>
                 </div>
                 <div class="stk-card">
-                    <div class="stk-badge">🏆The Best</div>
-                    <div class="stk-icon">💎</div>
+                    <div class="stk-badge">The Best</div>
+                    <div class="stk-icon"><i class="bx bx-plant-pot" style="color: #FF4500;"></i></div>
                     <div class="stk-dur">12 Months</div>
                     <div class="stk-apy">15%</div>
                     <div class="stk-lbl">APY</div>
                 </div>
             </div>
-            <div class="reg-box">
-                <div class="reg-title">🔒 Register Staking Address</div>
-                <p class="reg-desc">Enter your Solana wallet address to be whitelisted for staking rewards at launch.
-                </p>
-                <div class="reg-row">
-                    <input class="reg-input" id="wallet-input" type="text"
-                        placeholder="Your Solana wallet address (e.g. 7xKX…)" />
-                    <button class="btn-primary" onclick="registerWallet()" style="padding:13px 20px;font-size:12px">Lock
-                        In</button>
-                </div>
-                <div id="wallet-success"
-                    style="display:none;margin-top:12px;text-align:center;color:#6ee76e;font-size:15px;font-weight:600;padding:12px;background:rgba(0,255,0,.05);border:1px solid rgba(0,255,0,.15);border-radius:8px">
-                    ✅ Address registered! You'll receive staking rewards at TGE.</div>
-            </div>
+          
         </div>
     </section>
 
     <!-- ROADMAP -->
-    <section class="rm-section">
+    <section class="rm-section" id="roadmap">
         <div class="sw">
             <h2 class="sec-title">Roadmap</h2>
             <p class="sec-sub">Phase by phase — from spark to inferno</p>
@@ -322,7 +315,7 @@
             <div class="rm-timeline">
                 <div class="rm-line"></div>
                 <div class="rm-item">
-                    <div class="rm-dot active">🚀</div>
+                    <div class="rm-dot active"><i class="bx bx-turn-down"></i></div>
                     <div class="rm-card active">
                         <div class="rm-phase">Phase 1 — Ignition</div>
                         <div class="rm-title">The Setup</div>
@@ -334,7 +327,7 @@
                     </div>
                 </div>
                 <div class="rm-item">
-                    <div class="rm-dot">📈</div>
+                    <div class="rm-dot"><i class="bx bx-turn-down"></i></div>
                     <div class="rm-card">
                         <div class="rm-phase">Phase 2 — Spread</div>
                         <div class="rm-title">Ecosystem</div>
@@ -345,7 +338,7 @@
                     </div>
                 </div>
                 <div class="rm-item">
-                    <div class="rm-dot">🏆</div>
+                    <div class="rm-dot"><i class="bx bx-turn-down"></i></div>
                     <div class="rm-card">
                         <div class="rm-phase">Phase 3 — Blaze</div>
                         <div class="rm-title">Market Domination</div>
@@ -367,12 +360,13 @@
 
 
     <!-- FAQ -->
-    <section class="faq-section">
-        <div class="sw">
-            <h2 class="sec-title">Got <span>Questions?</span></h2>
+    <section class="faq-section" id="faqs">
+         <div class="sw">
+            <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
+
             <div class="divider"></div>
-            <div class="faq-list" id="faq-list"></div>
-        </div>
+             <div class="faq-list" id="faq-list"></div>
+     
     </section>
 
     <!-- FOOTER -->
@@ -382,17 +376,16 @@
                 <p class="f-tag">The prized reserve coin for those who refuse to stay cold.</p>
             </div>
             <div class="f-socials">
-                <a href="#" class="f-social"></a>
-                <a href="#" class="f-social">📱</a>
-                <a href="#" class="f-social">💬</a>
-                <a href="#" class="f-social">📢</a>
-                <a href="#" class="f-social">📰</a>
+                <a href="#" class="f-social"><i class="bxl bx-twitter-x" ></i></a>
+                <a href="#" class="f-social"><i class="bxl bx-instagram" ></i></a>
+                <a href="#" class="f-social"><i class="bxl bx-telegram" ></i></a>
+                <a href="#" class="f-social"><i class="bxl bx-discord-alt" ></i></a>
+              
             </div>
             <nav class="f-nav">
-                <a href="#" class="f-link">Home</a><a href="#" class="f-link">Tokenomics</a>
-                <a href="#" class="f-link">Staking</a><a href="#" class="f-link">Roadmap</a>
-                <a href="#" class="f-link">Whitepaper</a><a href="#" class="f-link">Airdrop</a>
-                <a href="#" class="f-link">Contact</a>
+                <a href="#home" class="f-link">Home</a><a href="#tokenomics" class="f-link">Tokenomics</a>
+                <a href="./staking/staking.html" class="f-link">Staking</a><a href="#roadmap" class="f-link">Roadmap</a>
+                <a href="#faqs" class="f-link">FAQs</a>
             </nav>
             <div class="f-rule"></div>
             <p class="f-copy">© 2026 Bright Flame ($FLAME). All rights reserved. Not financial advice. Always DYOR.</p>
