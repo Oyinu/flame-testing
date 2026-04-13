@@ -192,6 +192,30 @@ async function connectWallet() {
   }
 }
 
+async function getFlameBalance() {
+  try {
+    const mint = new solanaWeb3.PublicKey(FLAME_MINT);
+
+    const accounts = await connection.getParsedTokenAccountsByOwner(
+      wallet,
+      { mint }
+    );
+
+    if (accounts.value.length === 0) {
+      return 0;
+    }
+
+    const balance =
+      accounts.value[0].account.data.parsed.info.tokenAmount.uiAmount;
+
+    return balance || 0;
+
+  } catch (err) {
+    console.error("Balance fetch error:", err);
+    return 0;
+  }
+}
+
 function disconnectWallet() {
   if (window.solana) window.solana.disconnect();
   wallet      = null;
@@ -216,9 +240,7 @@ async function loadUserData() {
     // --- $FLAME token balance ---
     try {
       const mint = new solanaWeb3.PublicKey(FLAME_MINT);
-      const ata  = findATA(wallet, mint);
-      const acct = await connection.getTokenAccountBalance(ata);
-      flameBalance = acct.value.uiAmount || 0;
+     flameBalance = await getFlameBalance();
       document.getElementById("walletBal").textContent  = fmt(flameBalance) + " $FLAME";
       document.getElementById("statBalance").textContent = fmt(flameBalance);
     } catch {
