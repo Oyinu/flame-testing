@@ -97,12 +97,15 @@ function writeU64LE(value) {
   return buf;
 }
 
-// Derive ATA address without Anchor
-function findATA(owner, mint) {
-  return solanaWeb3.PublicKey.findProgramAddressSync(
-    [owner.toBytes(), TOKEN_PROGRAM_ID.toBytes(), mint.toBytes()],
-    SPL_ATA_PROGRAM
-  )[0];
+// ============================================================
+//  GET USER TOKEN ACCOUNT (looks up real on-chain ATA)
+//  Replaces the old findATA which computed the wrong address
+// ============================================================
+async function getUserTokenAccount(owner, mint) {
+  const accounts = await connection.getTokenAccountsByOwner(owner, { mint });
+  if (!accounts.value.length) throw new Error("No $FLAME token account found for this wallet");
+  console.log("Real ATA:", accounts.value[0].pubkey.toString());
+  return accounts.value[0].pubkey;
 }
 
 // ============================================================
@@ -192,30 +195,6 @@ async function connectWallet() {
   }
 }
 
-async function getFlameBalance() {
-  try {
-    const mint = new solanaWeb3.PublicKey(FLAME_MINT);
-
-    const accounts = await connection.getParsedTokenAccountsByOwner(
-      wallet,
-      { mint }
-    );
-
-    if (accounts.value.length === 0) {
-      return 0;
-    }
-
-    const balance =
-      accounts.value[0].account.data.parsed.info.tokenAmount.uiAmount;
-
-    return balance || 0;
-
-  } catch (err) {
-    console.error("Balance fetch error:", err);
-    return 0;
-  }
-}
-
 function disconnectWallet() {
   if (window.solana) window.solana.disconnect();
   wallet      = null;
@@ -237,13 +216,20 @@ function disconnectWallet() {
 async function loadUserData() {
   if (!wallet || !connection) return;
   try {
-    // --- $FLAME token balance ---
+    // --- $FLAME token balance — looks up real on-chain ATA ---
     try {
       const mint = new solanaWeb3.PublicKey(FLAME_MINT);
-     flameBalance = await getFlameBalance();
-      document.getElementById("walletBal").textContent  = fmt(flameBalance) + " $FLAME";
+      const accounts = await connection.getTokenAccountsByOwner(wallet, { mint });
+      if (accounts.value.length > 0) {
+        const acct = await connection.getTokenAccountBalance(accounts.value[0].pubkey);
+        flameBalance = acct.value.uiAmount || 0;
+      } else {
+        flameBalance = 0;
+      }
+      document.getElementById("walletBal").textContent   = fmt(flameBalance) + " $FLAME";
       document.getElementById("statBalance").textContent = fmt(flameBalance);
-    } catch {
+    } catch (err) {
+      console.error("Balance fetch error:", err);
       flameBalance = 0;
       document.getElementById("statBalance").textContent = "0";
     }
@@ -387,9 +373,9 @@ async function stake() {
     setLoading("stakeBtn", true, "");
     showToast("Preparing transaction...", "info");
 
-    const mint         = new solanaWeb3.PublicKey(FLAME_MINT);
-    const programId    = new solanaWeb3.PublicKey(PROGRAM_ID);
-    const userTokenAcct = findATA(wallet, mint);
+    const mint          = new solanaWeb3.PublicKey(FLAME_MINT);
+    const programId     = new solanaWeb3.PublicKey(PROGRAM_ID);
+    const userTokenAcct = await getUserTokenAccount(wallet, mint); // ← real on-chain lookup
     const stakingVault  = getStakingVaultPDA();
     const stakeInfoPda  = getStakeInfoPDA(wallet);
     const tokenConfig   = getTokenConfigPDA();
@@ -440,11 +426,12 @@ async function stake() {
   } catch (err) {
     console.error("Stake error:", err);
     const msg = err.message || "";
-    if (msg.includes("AlreadyStaked"))      showToast("You already have an active stake", "error");
-    else if (msg.includes("InvalidTier"))   showToast("Invalid staking tier", "error");
+    if (msg.includes("AlreadyStaked"))          showToast("You already have an active stake", "error");
+    else if (msg.includes("InvalidTier"))       showToast("Invalid staking tier", "error");
     else if (msg.includes("InsufficientFunds")) showToast("Insufficient balance", "error");
+    else if (msg.includes("No $FLAME"))         showToast("No $FLAME token account found", "error");
     else if (msg.includes("rejected") || msg.includes("User rejected"))
-                                            showToast("Transaction rejected", "error");
+                                                showToast("Transaction rejected", "error");
     else showToast("Stake failed: " + msg.slice(0, 60), "error");
   } finally {
     setLoading("stakeBtn", false, "🔥 Stake $FLAME Now");
@@ -463,7 +450,7 @@ async function unstake() {
 
     const mint          = new solanaWeb3.PublicKey(FLAME_MINT);
     const programId     = new solanaWeb3.PublicKey(PROGRAM_ID);
-    const userTokenAcct = findATA(wallet, mint);
+    const userTokenAcct = await getUserTokenAccount(wallet, mint); // ← real on-chain lookup
     const stakingVault  = getStakingVaultPDA();
     const stakeInfoPda  = getStakeInfoPDA(wallet);
     const tokenConfig   = getTokenConfigPDA();
@@ -504,6 +491,7 @@ async function unstake() {
     const msg = err.message || "";
     if (msg.includes("StakingLockActive"))  showToast("🔒 Lock period not finished yet", "error");
     else if (msg.includes("NotStaked"))     showToast("No active stake found", "error");
+    else if (msg.includes("No $FLAME"))     showToast("No $FLAME token account found", "error");
     else if (msg.includes("rejected") || msg.includes("User rejected"))
                                             showToast("Transaction rejected", "error");
     else showToast("Unstake failed: " + msg.slice(0, 60), "error");
