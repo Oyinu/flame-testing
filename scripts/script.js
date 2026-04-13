@@ -29,19 +29,12 @@ for (let i = 0; i < 18; i++) {
 const FAQS = [
   {
     q: "What is $FLAME?",
-    a: "$FLAME is a community-driven DeFi token on Solana built around scarcity, staking rewards, and early-mover incentives. It is designed for those who want to get in before the fire spreads.",
+    a: "$FLAME is a community-driven utility token on Solana built around scarcity, staking rewards, and early-mover incentives. It is designed for those who want to get in before the fire spreads.",
   },
-  {
-    q: "How does the airdrop work?",
-    a: "Submit your Solana wallet address via the Claim Airdrop form. Allocations are distributed proportionally to early registrants before the public launch. The earlier you register, the larger your allocation.",
-  },
-  {
-    q: "When will I receive my tokens?",
-    a: "Tokens are distributed at the TGE (Token Generation Event). All pre-launch buyers and airdrop registrants receive their allocation automatically — no manual claiming needed.",
-  },
+
   {
     q: "How does the staking system work?",
-    a: "Stake $FLAME for 1, 3, 6, or 12 months and earn APY rewards from 25% up to 175%. Longer lockups earn higher yields. Staking opens immediately at launch and rewards compound automatically.",
+    a: "Stake $FLAME for 1, 3, 6, or 12 months and earn APY rewards from 2% up to 15%. Longer lockups earn higher yields. Staking opens immediately at launch and rewards compound automatically.",
   },
   {
     q: "What is the purpose of the Early Fund?",

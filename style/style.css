@@ -514,25 +514,23 @@ button {
   font-size: 15px;
   letter-spacing: 0.5px;
 }
-.divider {
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+.divider{
+        width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    margin: 1.4rem auto;
 }
 /* ── MISSION AND VISION ── */
 .mv{
      border-top: 1px solid var(--border);
 }
 .mv-image, .mv-image2{
-    max-width: 70%;
-    margin-top: 2rem;
+    max-width: 100%;
+    margin-top: 4rem;
     /* perspective: 1000px; */
 }
 .mv-image img, .mv-image2 img{
-    width:65%;
+    width:100%;
     /* transform: rotateX(10deg) rotateY(-15deg); */
 transform: rotate(-5deg);
 box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -540,11 +538,11 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 .mv-container{
   padding: 4rem 2rem;
-
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
+  margin-left: 15%;
 }
 .mission, .vision{
     align-items: center;
@@ -1223,7 +1221,9 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
  
   .mv-container {
     padding: 2rem 1rem;
+    margin: 0 auto;
   }
+
 }
  
  
