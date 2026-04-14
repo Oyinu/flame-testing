@@ -23,6 +23,7 @@ const DISC_STAKE_INFO = new Uint8Array([66, 62, 68, 70, 108, 179, 183, 235]);
 //  TIER CONFIG
 // ============================================================
 const TIERS = {
+  0: { label: "10 Minutes", days: 0.007, apy: 1 }, // test tier
   1: { label: "1 Month",   days: 30,  apy: 2  },
   2: { label: "3 Months",  days: 90,  apy: 5  },
   3: { label: "6 Months",  days: 180, apy: 10 },
@@ -137,7 +138,7 @@ function getTokenConfigPDA() {
 //  Layout (after 8-byte discriminator):
 //   owner        [32] pubkey
 //   amount       [8]  u64
-//   tier         [1]  u8
+//   tier         [0]  u8
 //   apy_bps      [8]  u64
 //   start_time   [8]  i64
 //   unlock_time  [8]  i64
@@ -265,7 +266,7 @@ function showActiveStake(info) {
   document.getElementById("activeStakePanel").style.display = "block";
   document.getElementById("stakePanel").style.display = "none";
 
-  const tier     = TIERS[info.tier] || TIERS[1];
+  const tier     = TIERS[info.tier] || TIERS[0];
   const amountUI = Number(info.amount) / Math.pow(10, TOKEN_DECIMALS);
   const apyPct   = Number(info.apyBps) / 100;
   const reward   = calcReward(amountUI, apyPct, tier.days);
@@ -317,7 +318,7 @@ function resetStats() {
 // ============================================================
 function selectTier(n) {
   selectedTier = n;
-  [1, 2, 3, 4].forEach(i =>
+  [0,1, 2, 3, 4].forEach(i =>
     document.getElementById("tier" + i).classList.remove("selected")
   );
   document.getElementById("tier" + n).classList.add("selected");
@@ -326,7 +327,7 @@ function selectTier(n) {
 }
 
 function updateEstimate() {
-  if (!selectedTier) return;
+  if (selectedTier === null || selectedTier === undefined) return;
   const t      = TIERS[selectedTier];
   const amount = parseFloat(document.getElementById("stakeAmount").value) || 0;
   const reward = calcReward(amount, t.apy, t.days);
@@ -349,7 +350,7 @@ function updateStakeButton() {
   if (!wallet) {
     btn.textContent = "Connect Wallet to Stake";
     btn.disabled = true;
-  } else if (!selectedTier) {
+  } else if (selectedTier === null || selectedTier === undefined) {
     btn.textContent = "Select a Tier First";
     btn.disabled = true;
   } else {
@@ -363,7 +364,7 @@ function updateStakeButton() {
 // ============================================================
 async function stake() {
   if (!wallet || !connection) { showToast("Connect wallet first", "error"); return; }
-  if (!selectedTier)          { showToast("Select a staking tier", "error"); return; }
+  if (selectedTier === null || selectedTier === undefined) { showToast("Select a staking tier", "error"); return; }
 
   const amountVal = parseFloat(document.getElementById("stakeAmount").value);
   if (!amountVal || amountVal <= 0) { showToast("Enter a valid amount", "error"); return; }
@@ -420,7 +421,7 @@ async function stake() {
     showToast("✅ Staked! Tx: " + signature.slice(0, 8) + "...", "success");
     document.getElementById("stakeAmount").value = "";
     selectedTier = null;
-    [1,2,3,4].forEach(i => document.getElementById("tier"+i).classList.remove("selected"));
+    [0,1,2,3,4].forEach(i => document.getElementById("tier"+i).classList.remove("selected"));
     await loadUserData();
 
   } catch (err) {

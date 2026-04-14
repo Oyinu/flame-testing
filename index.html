@@ -18,8 +18,8 @@
 <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
 <!-- Brand Icons -->
 <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
-
-
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="./scroll-animations.css">
 </head>
 
 <body>
@@ -120,7 +120,7 @@
     <!-- HOW IT WORKS -->
     <!-- <section class="hiw-section">
         <div class="sw">
-            <h2 class="sec-title">How It <span>Works</span></h2>
+            <h2 class="mv-title">How It <span>Works</span></h2>
             <p class="sec-sub">Three simple steps — get in before the flame spreads</p>
             <div class="divider"></div>
             <div class="hiw-grid">
@@ -156,14 +156,24 @@
         </div>
     </section> -->
 
-    <!-- TOKENOMICS -->
+    <!-- TOKENOMICS
     <section class="tok-section" id="tokenomics">
         <div class="sw">
-            <h2 class="sec-title">Tokenomics</h2>
+           
             <p class="sec-sub">1,000,000,000 $FLAME total supply — fixed forever. No more, no less.</p>
             <div class="divider"></div>
 
-            <div class="tok-cards">
+           
+
+            <p class="tok-note">Fixed supply &middot; No minting &middot; No rugpull</p>
+        </div>
+    </section> -->
+  <section class="tok-section" id="tokenomics">
+    <div class="sw">
+ <h2 class="mv-title">Tokenomics</h2>
+ <div class="divider"></div>
+     <div class="tokenomics-container">
+   <div class="tok-cards">
 
                 <div class="tok-card">
                     <div class="tok-card-left">
@@ -262,15 +272,18 @@
                 </div>
 
             </div>
-
-            <p class="tok-note">Fixed supply &middot; No minting &middot; No rugpull</p>
+        <div class="tokenomics-chart">
+            <canvas id="tokenomicsChart"></canvas>
         </div>
+     </div>
+    </div>
+    
+     
     </section>
-
     <!-- STAKING -->
     <section class="stk-section">
         <div class="sw">
-            <h2 class="sec-title">Staking <span>Tiers</span></h2>
+            <h2 class="mv-title">Staking <span>Tiers</span></h2>
             <p class="sec-sub">Lock your $FLAME and watch rewards burn brighter — longer stakes, bigger flames.</p>
             <div class="divider"></div>
             <div class="stk-grid">
@@ -308,7 +321,7 @@
     <!-- ROADMAP -->
     <section class="rm-section" id="roadmap">
         <div class="sw">
-            <h2 class="sec-title">Roadmap</h2>
+            <h2 class="mv-title">Roadmap</h2>
             <p class="sec-sub">Phase by phase — from spark to inferno</p>
             <div class="divider"></div>
             <div class="rm-timeline">
@@ -361,7 +374,7 @@
     <!-- FAQ -->
     <section class="faq-section" id="faqs">
          <div class="sw">
-            <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
+            <h2 class="mv-title">Frequently Asked <span>Questions</span></h2>
             <p class="sec-sub">Got questions? We’ve got answers. If you don’t see your question here, reach out to our support team.</p>
             <div class="divider"></div>
              <div class="faq-list" id="faq-list"></div>
@@ -394,5 +407,6 @@
 </body>
 <script src="/scripts/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="./scroll-animations.js"></script>
 <script src="./staking/staking.js"></script>
 </html>

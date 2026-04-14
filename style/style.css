@@ -500,7 +500,7 @@ button {
 }
 .sec-title, .mv-title {
   font-family: var(--fd);
-  font-size: clamp(24px, 5vw, 42px);
+ font-size: 3rem;
   color: #fff;
   text-align: center;
   margin-bottom: 12px;
@@ -731,6 +731,59 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #4a3020;
+}
+/*Tokenomics styling*/
+.tokenomics-container{
+     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+}
+.tokenomics .tok-cards {
+    width: 50%;
+    margin: 0;
+}
+
+.tokenomics-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 0;
+    flex: 1 1 380px;
+    max-width: 480px;
+}
+
+.tokenomics-chart canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+}
+
+
+/*Token-info styling*/
+#token-info {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: var(--bg);
+    color: white;
+    animation: fadeIn 2s ease;
+  
+}
+
+#token-info h2{
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+.token-info{
+    padding: 2rem;
+}
+#token-info p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 600px) {
@@ -1409,11 +1462,10 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     padding: 56px 16px;
   }
  
-  .sec-title,
   .mv-title {
-    font-size: clamp(20px, 6vw, 30px);
+   font-size: 2rem;
   }
- 
+
   .sec-sub {
     font-size: 13px;
     padding: 0 8px;
@@ -1494,6 +1546,24 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   }
  
   /* ── TOKENOMICS ── */
+  .tok-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 16px;
+    gap: 24px;
+  }
+  .tok-section .tok-cards {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+.tokenomics-chart {
+    flex: none;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+    padding: 0;
+}
   .tok-card {
     flex-direction: column;
     align-items: flex-start;
@@ -1509,6 +1579,15 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   }
   .tok-card-pct {
     font-size: 22px;
+  }
+  .tokenomics-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    gap: 20px;
+  }
+  .tok-cards {
+    width: 100% !important;
   }
 }
  
@@ -1677,6 +1756,12 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
  
   .stk-apy {
     font-size: 30px;
+  }
+  .tokenomics-container{
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 16px;
+    gap: 24px;
   }
 }
  

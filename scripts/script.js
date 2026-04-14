@@ -23,7 +23,44 @@ for (let i = 0; i < 18; i++) {
   emberContainer.appendChild(e);
 }
 
-
+  const chartElement = document.getElementById("tokenomicsChart");
+    if (chartElement) {
+        const ctx = chartElement.getContext("2d");
+        new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: [
+                    "Burned at Launch",
+                    "Liquidity Pool on Raydium",
+                    "Staking Rewards",
+                    "Mission / Charity Fund",
+                    "Team",
+                    "Community, Growth & Airdrops"
+                ],
+                datasets: [
+                    {
+                        data: [15, 25, 15, 15, 10, 20],
+                        backgroundColor: ["#FF4500", "#FF6A00", "#FFB347", "#E84040", "#C0392B", "#FF8C00"],
+                        borderColor: "#1a1a1a",
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            color: "#fff",
+                            padding: 16,
+                            font: { size: 13 }
+                        }
+                    }
+                }
+            }
+        });
+    }
 
 // ── FAQ ──
 const FAQS = [
