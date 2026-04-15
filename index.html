@@ -12,14 +12,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet" />
-        <!-- Basic Icons -->
-<link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-<!-- Filled Icons -->
-<link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
-<!-- Brand Icons -->
-<link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" href="./scroll-animations.css">
+    <!-- Basic Icons -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <!-- Filled Icons -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <!-- Brand Icons -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./scroll-animations.css">
 </head>
 
 <body>
@@ -41,9 +41,19 @@
                 <li><a href="#faqs">FAQs</a></li>
             </ul>
         </div>
-        <div class="stake-button">
-            <button><a href="./coming-soon/staking-cs.html">Stake Now!</a></button>
-        </div>
+<div class="nav-actions">
+    <audio id="myAudio" autoplay loop hidden>
+        <source src="./assets/flame-anthem.mp3" type="audio/mpeg">
+    </audio>
+
+    <button onclick="toggleAudio()" class="audio-btn">
+        <i class="bx bx-volume-full" style="color: #FF6A00;"></i>
+    </button>
+
+    <div class="stake-button">
+        <button><a href="./coming-soon/staking-cs.html">Stake Now!</a></button>
+    </div>
+</div>
     </nav>
     <!-- HERO -->
     <section class="hero" id="home">
@@ -81,17 +91,17 @@
 
         </div>
         <div class="btn-row" style="margin-top:12px">
-             <button class="btn-ghost"><a href="./coming-soon/staking-cs.html">Stake Now!</a></button>
+            <button class="btn-ghost"><a href="./coming-soon/staking-cs.html">Stake Now!</a></button>
         </div>
     </section>
     <!--Mission & Vision-->
     <section class="mv" id="mv">
         <div class="sw">
-<div style="width:100%;">
-    <h2 class="mv-title">Mission & <span>Vision</span></h2>
-    <p class="sec-sub">Our mission and Vision for $Flame</p>
-    <div class="divider"></div>
-</div>
+            <div style="width:100%;">
+                <h2 class="mv-title">Mission & <span>Vision</span></h2>
+                <p class="sec-sub">Our mission and Vision for $Flame</p>
+                <div class="divider"></div>
+            </div>
             <div class="main-mv" style="display: flex;">
                 <div class="mv-image">
                     <img src="./assets/scroll.png" style="display: flex;" alt="">
@@ -99,11 +109,13 @@
                 <div class="mv-container">
                     <div class="mission">
                         <h2>$Flame Mission:</h2>
-                        <p>"Deliver transparent funding, community governance, and sustainable incentives through blockchain technology."</p>
+                        <p>"Deliver transparent funding, community governance, and sustainable incentives through
+                            blockchain technology."</p>
                     </div>
                     <div class="vision">
                         <h2>$Flame Vision:</h2>
-                        <p>"Build a decentralized financial ecosystem that creates global opportunity and humanitarian impact." </p>
+                        <p>"Build a decentralized financial ecosystem that creates global opportunity and humanitarian
+                            impact." </p>
                     </div>
                 </div>
                 <div class="mv-image2" style="display: none;">
@@ -166,117 +178,117 @@
             <p class="tok-note">Fixed supply &middot; No minting &middot; No rugpull</p>
         </div>
     </section> -->
-  <section class="tok-section" id="tokenomics">
-    <div class="sw">
- <h2 class="mv-title">Tokenomics</h2>
- <div class="divider"></div>
-     <div class="tokenomics-container">
-   <div class="tok-cards">
+    <section class="tok-section" id="tokenomics">
+        <div class="sw">
+            <h2 class="mv-title">Tokenomics</h2>
+            <div class="divider"></div>
+            <div class="tokenomics-container">
+                <div class="tok-cards">
 
-                <div class="tok-card">
-                    <div class="tok-card-left">
-                        
-                        <div>
-                            <div class="tok-card-label">Burned at Launch</div>
-                            <div class="tok-card-sub">150M gone forever</div>
+                    <div class="tok-card">
+                        <div class="tok-card-left">
+
+                            <div>
+                                <div class="tok-card-label">Burned at Launch</div>
+                                <div class="tok-card-sub">150M gone forever</div>
+                            </div>
+                        </div>
+                        <div class="tok-card-right">
+                            <div class="tok-card-pct" style="color:#FF4500">15%</div>
+                            <div class="tok-bar-track">
+                                <div class="tok-bar-fill" style="width:15%; background:#FF4500"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="tok-card-right">
-                        <div class="tok-card-pct" style="color:#FF4500">15%</div>
-                        <div class="tok-bar-track">
-                            <div class="tok-bar-fill" style="width:15%; background:#FF4500"></div>
+
+                    <div class="tok-card">
+                        <div class="tok-card-left">
+
+                            <div>
+                                <div class="tok-card-label">Liquidity Pool on Raydium</div>
+                                <div class="tok-card-sub">Locked LP at launch</div>
+                            </div>
+                        </div>
+                        <div class="tok-card-right">
+                            <div class="tok-card-pct" style="color:#FF6A00">25%</div>
+                            <div class="tok-bar-track">
+                                <div class="tok-bar-fill" style="width:25%; background:#FF6A00"></div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="tok-card">
+                        <div class="tok-card-left">
+
+                            <div>
+                                <div class="tok-card-label">Staking Rewards</div>
+                                <div class="tok-card-sub">For active stakers</div>
+                            </div>
+                        </div>
+                        <div class="tok-card-right">
+                            <div class="tok-card-pct" style="color:#FFB347">15%</div>
+                            <div class="tok-bar-track">
+                                <div class="tok-bar-fill" style="width:15%; background:#FFB347"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tok-card">
+                        <div class="tok-card-left">
+
+                            <div>
+                                <div class="tok-card-label">Mission / Charity Fund</div>
+                                <div class="tok-card-sub">Real-world impact · James 1:27</div>
+                            </div>
+                        </div>
+                        <div class="tok-card-right">
+                            <div class="tok-card-pct" style="color:#E84040">15%</div>
+                            <div class="tok-bar-track">
+                                <div class="tok-bar-fill" style="width:15%; background:#E84040"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tok-card">
+                        <div class="tok-card-left">
+
+                            <div>
+                                <div class="tok-card-label">Team</div>
+                                <div class="tok-card-sub">Vested 12–18 months</div>
+                            </div>
+                        </div>
+                        <div class="tok-card-right">
+                            <div class="tok-card-pct" style="color:#C0392B">10%</div>
+                            <div class="tok-bar-track">
+                                <div class="tok-bar-fill" style="width:10%; background:#C0392B"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tok-card">
+                        <div class="tok-card-left">
+
+                            <div>
+                                <div class="tok-card-label">Community, Growth & Airdrops</div>
+                                <div class="tok-card-sub">Referrals, campaigns & rewards</div>
+                            </div>
+                        </div>
+                        <div class="tok-card-right">
+                            <div class="tok-card-pct" style="color:#FF8C00">20%</div>
+                            <div class="tok-bar-track">
+                                <div class="tok-bar-fill" style="width:20%; background:#FF8C00"></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="tok-card">
-                    <div class="tok-card-left">
-                    
-                        <div>
-                            <div class="tok-card-label">Liquidity Pool on Raydium</div>
-                            <div class="tok-card-sub">Locked LP at launch</div>
-                        </div>
-                    </div>
-                    <div class="tok-card-right">
-                        <div class="tok-card-pct" style="color:#FF6A00">25%</div>
-                        <div class="tok-bar-track">
-                            <div class="tok-bar-fill" style="width:25%; background:#FF6A00"></div>
-                        </div>
-                    </div>
+                <div class="tokenomics-chart">
+                    <canvas id="tokenomicsChart"></canvas>
                 </div>
-
-                <div class="tok-card">
-                    <div class="tok-card-left">
-                
-                        <div>
-                            <div class="tok-card-label">Staking Rewards</div>
-                            <div class="tok-card-sub">For active stakers</div>
-                        </div>
-                    </div>
-                    <div class="tok-card-right">
-                        <div class="tok-card-pct" style="color:#FFB347">15%</div>
-                        <div class="tok-bar-track">
-                            <div class="tok-bar-fill" style="width:15%; background:#FFB347"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tok-card">
-                    <div class="tok-card-left">
-                        
-                        <div>
-                            <div class="tok-card-label">Mission / Charity Fund</div>
-                            <div class="tok-card-sub">Real-world impact · James 1:27</div>
-                        </div>
-                    </div>
-                    <div class="tok-card-right">
-                        <div class="tok-card-pct" style="color:#E84040">15%</div>
-                        <div class="tok-bar-track">
-                            <div class="tok-bar-fill" style="width:15%; background:#E84040"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tok-card">
-                    <div class="tok-card-left">
-                        
-                        <div>
-                            <div class="tok-card-label">Team</div>
-                            <div class="tok-card-sub">Vested 12–18 months</div>
-                        </div>
-                    </div>
-                    <div class="tok-card-right">
-                        <div class="tok-card-pct" style="color:#C0392B">10%</div>
-                        <div class="tok-bar-track">
-                            <div class="tok-bar-fill" style="width:10%; background:#C0392B"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tok-card">
-                    <div class="tok-card-left">
-                        
-                        <div>
-                            <div class="tok-card-label">Community, Growth & Airdrops</div>
-                            <div class="tok-card-sub">Referrals, campaigns & rewards</div>
-                        </div>
-                    </div>
-                    <div class="tok-card-right">
-                        <div class="tok-card-pct" style="color:#FF8C00">20%</div>
-                        <div class="tok-bar-track">
-                            <div class="tok-bar-fill" style="width:20%; background:#FF8C00"></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        <div class="tokenomics-chart">
-            <canvas id="tokenomicsChart"></canvas>
         </div>
-     </div>
-    </div>
-    
-     
+
+
     </section>
     <!-- STAKING -->
     <section class="stk-section">
@@ -298,7 +310,7 @@
                     <div class="stk-lbl">APY</div>
                 </div>
                 <div class="stk-card">
-                    
+
                     <div class="stk-icon"><i class="bx bx-plant-pot" style="color: #FF4500;"></i></div>
                     <div class="stk-dur">6 Months</div>
                     <div class="stk-apy">10%</div>
@@ -312,7 +324,7 @@
                     <div class="stk-lbl">APY</div>
                 </div>
             </div>
-          
+
         </div>
     </section>
 
@@ -330,10 +342,13 @@
                         <div class="rm-phase">Phase 1 — Foundation</div>
                         <div class="rm-title">The Setup</div>
                         <ul class="rm-bullets">
-                            <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Build a secure, community strong and faith driven utility token ecosystem to support humanitarian and environmental initiatives.</li>
+                            <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Build a secure, community strong and
+                                faith driven utility token ecosystem to support humanitarian and environmental
+                                initiatives.</li>
                             <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Build core community (Twitter,
                                 Telegram, Discord)</li>
-                                 <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Token Creation, Website + Social Presence</li>
+                            <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Token Creation, Website + Social
+                                Presence</li>
                         </ul>
                     </div>
                 </div>
@@ -345,13 +360,13 @@
                         <ul class="rm-bullets">
                             <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Marketing campaigns
                             </li>
-                              <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Exchange listings (DEX first)
+                            <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Exchange listings (DEX first)
                             </li>
-                              <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Partnerships development
+                            <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Partnerships development
                             </li>
-                              <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Staking implementation
+                            <li class="rm-bullet"><span class="rm-dot-sym">▸</span>Staking implementation
                             </li>
-                          
+
                     </div>
                 </div>
                 <div class="rm-item">
@@ -371,7 +386,7 @@
                         </ul>
                     </div>
                 </div>
-        
+
             </div>
         </div>
     </section>
@@ -379,12 +394,13 @@
 
     <!-- FAQ -->
     <section class="faq-section" id="faqs">
-         <div class="sw">
+        <div class="sw">
             <h2 class="mv-title">Frequently Asked <span>Questions</span></h2>
-            <p class="sec-sub">Got questions? We’ve got answers. If you don’t see your question here, reach out to our support team.</p>
+            <p class="sec-sub">Got questions? We’ve got answers. If you don’t see your question here, reach out to our
+                support team.</p>
             <div class="divider"></div>
-             <div class="faq-list" id="faq-list"></div>
-     
+            <div class="faq-list" id="faq-list"></div>
+
     </section>
 
     <!-- FOOTER -->
@@ -394,15 +410,18 @@
                 <p class="f-tag">The prized reserve coin for those who refuse to stay cold.</p>
             </div>
             <div class="f-socials">
-                <a href="https://x.com/brightflame7777?s=21" class="f-social" target="_blank" ><i class="bxl bx-twitter-x" ></i></a>
-                <a href="#" class="f-social"><i class="bxl bx-instagram" ></i></a>
-                <a href="https://t.me/brightflameuc" class="f-social" target="_blank" ><i class="bxl bx-telegram" ></i></a>
-                <a href="#" class="f-social"><i class="bxl bx-discord-alt" ></i></a>
-              
+                <a href="https://x.com/brightflame7777?s=21" class="f-social" target="_blank"><i
+                        class="bxl bx-twitter-x"></i></a>
+                <a href="#" class="f-social"><i class="bxl bx-instagram"></i></a>
+                <a href="https://t.me/brightflameuc" class="f-social" target="_blank"><i
+                        class="bxl bx-telegram"></i></a>
+                <a href="#" class="f-social"><i class="bxl bx-discord-alt"></i></a>
+
             </div>
             <nav class="f-nav">
                 <a href="#home" class="f-link">Home</a><a href="#tokenomics" class="f-link">Tokenomics</a>
-                <a href="./coming-soon/staking-cs.html" class="f-link">Staking</a><a href="#roadmap" class="f-link">Roadmap</a>
+                <a href="./coming-soon/staking-cs.html" class="f-link">Staking</a><a href="#roadmap"
+                    class="f-link">Roadmap</a>
                 <a href="#faqs" class="f-link">FAQs</a>
             </nav>
             <div class="f-rule"></div>
@@ -415,4 +434,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="./scroll-animations.js"></script>
 <script src="./staking/staking.js"></script>
+
 </html>

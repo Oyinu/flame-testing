@@ -25,12 +25,12 @@
 
   // Scroll image → slide in from right
   document.querySelectorAll('.mv-image, .mv-image2').forEach(el => {
-    el.classList.add('reveal', 'from-right');
+    el.classList.add('reveal', 'from-up');
   });
 
   // Tokenomics chart → scale in from right
   const chart = document.querySelector('.tokenomics-chart');
-  if (chart) chart.classList.add('reveal', 'from-right');
+  if (chart) chart.classList.add('reveal', 'from-up');
 
   // Tok-cards container → stagger
   const tokCards = document.querySelector('.tok-cards');

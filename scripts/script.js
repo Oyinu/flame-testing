@@ -95,7 +95,18 @@ FAQS.forEach((f, i) => {
     .querySelector(".faq-q")
     .addEventListener("click", () => item.classList.toggle("open"));
   faqList.appendChild(item);
-});
+})
+
+  const audio = document.getElementById("myAudio");
+
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
 
 // ── Wallet register ──
 function registerWallet() {
@@ -105,3 +116,4 @@ function registerWallet() {
   document.getElementById("wallet-input").style.display = "none";
   document.querySelector(".reg-row .btn-primary").style.display = "none";
 }
+
