@@ -40,7 +40,7 @@ for (let i = 0; i < 18; i++) {
                 datasets: [
                     {
                         data: [15, 25, 15, 15, 10, 20],
-                        backgroundColor: ["#FF4500", "#FF6A00", "#FFB347", "#E84040", "#C0392B", "#FF8C00"],
+                        backgroundColor: ["red", "yellow", "orange", "grey", "#C0392B", "green"],
                         borderColor: "#1a1a1a",
                         borderWidth: 2
                     }
@@ -64,6 +64,10 @@ for (let i = 0; i < 18; i++) {
 
 // ── FAQ ──
 const FAQS = [
+    {
+    q: "What is Bright Flame?",
+    a: "Bright Flame is a purpose-driven digital asset project combining decentralized finance with real-world impact, supporting orphans, widows, and underserved communities.",
+  },
   {
     q: "What is $FLAME?",
     a: "$FLAME is a community-driven utility token on Solana built around scarcity, staking rewards, and early-mover incentives. It is designed for those who want to get in before the fire spreads.",
@@ -79,7 +83,7 @@ const FAQS = [
   },
   {
     q: "Is this safe?",
-    a: "Smart contracts will be audited before launch. Liquidity is locked for 12 months, verifiable on-chain. Team tokens vest over 6 months with no early unlock. Always DYOR — never invest more than you can afford to lose.",
+    a: "Yes. Smart contracts will be audited before launch. Team tokens vest over 6 months with no early unlock.",
   },
 ];
 const faqList = document.getElementById("faq-list");
