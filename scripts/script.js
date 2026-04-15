@@ -78,10 +78,6 @@ const FAQS = [
     a: "Stake $FLAME for 1, 3, 6, or 12 months and earn APY rewards from 2% up to 15%. Longer lockups earn higher yields. Staking opens immediately at launch and rewards compound automatically.",
   },
   {
-    q: "What is the purpose of the Early Fund?",
-    a: "The Early Fund (10% of total supply) is reserved to reward the earliest supporters, airdrop participants, and community builders who help bootstrap Bright Flame before public listing.",
-  },
-  {
     q: "Is this safe?",
     a: "Yes. Smart contracts will be audited before launch. Team tokens vest over 6 months with no early unlock.",
   },

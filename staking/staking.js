@@ -23,8 +23,7 @@ const DISC_STAKE_INFO = new Uint8Array([66, 62, 68, 70, 108, 179, 183, 235]);
 //  TIER CONFIG
 // ============================================================
 const TIERS = {
-  0: { label: "10 Minutes", days: 0.007, apy: 1 }, // test tier
-  1: { label: "1 Month",   days: 30,  apy: 2  },
+  1: { label: "1 month", days: 30, apy: 2 },
   2: { label: "3 Months",  days: 90,  apy: 5  },
   3: { label: "6 Months",  days: 180, apy: 10 },
   4: { label: "12 Months", days: 365, apy: 15 },
@@ -266,7 +265,7 @@ function showActiveStake(info) {
   document.getElementById("activeStakePanel").style.display = "block";
   document.getElementById("stakePanel").style.display = "none";
 
-  const tier     = TIERS[info.tier] || TIERS[0];
+  const tier     = TIERS[info.tier] || TIERS[1];
   const amountUI = Number(info.amount) / Math.pow(10, TOKEN_DECIMALS);
   const apyPct   = Number(info.apyBps) / 100;
   const reward   = calcReward(amountUI, apyPct, tier.days);
@@ -294,8 +293,8 @@ function showActiveStake(info) {
   const unstakeNote = document.getElementById("unstakeNote");
   unstakeBtn.disabled    = locked;
   unstakeNote.textContent = locked
-    ? "🔒 Locked until " + fmtDate(info.unlockTime)
-    : "✅ Lock period complete — you can unstake now";
+    ? " Locked until " + fmtDate(info.unlockTime)
+    : " Lock period complete — you can unstake now";
 }
 
 function showStakeForm() {
@@ -318,7 +317,7 @@ function resetStats() {
 // ============================================================
 function selectTier(n) {
   selectedTier = n;
-  [0,1, 2, 3, 4].forEach(i =>
+  [1, 2, 3, 4].forEach(i =>
     document.getElementById("tier" + i).classList.remove("selected")
   );
   document.getElementById("tier" + n).classList.add("selected");
@@ -354,7 +353,7 @@ function updateStakeButton() {
     btn.textContent = "Select a Tier First";
     btn.disabled = true;
   } else {
-    btn.textContent = "🔥 Stake $FLAME Now";
+    btn.textContent = "Stake $FLAME Now!";
     btn.disabled = false;
   }
 }
@@ -418,10 +417,10 @@ async function stake() {
     const signature = await connection.sendRawTransaction(signed.serialize());
     await connection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, "confirmed");
 
-    showToast("✅ Staked! Tx: " + signature.slice(0, 8) + "...", "success");
+    showToast(" Staked! Tx: " + signature.slice(0, 8) + "...", "success");
     document.getElementById("stakeAmount").value = "";
     selectedTier = null;
-    [0,1,2,3,4].forEach(i => document.getElementById("tier"+i).classList.remove("selected"));
+    [1,2,3,4].forEach(i => document.getElementById("tier"+i).classList.remove("selected"));
     await loadUserData();
 
   } catch (err) {
@@ -435,7 +434,7 @@ async function stake() {
                                                 showToast("Transaction rejected", "error");
     else showToast("Stake failed: " + msg.slice(0, 60), "error");
   } finally {
-    setLoading("stakeBtn", false, "🔥 Stake $FLAME Now");
+    setLoading("stakeBtn", false, " Stake $FLAME Now");
   }
 }
 
@@ -483,14 +482,14 @@ async function unstake() {
     const signature = await connection.sendRawTransaction(signed.serialize());
     await connection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, "confirmed");
 
-    showToast("✅ Unstaked & rewards claimed! Tx: " + signature.slice(0, 8) + "...", "success");
+    showToast(" Unstaked & rewards claimed! Tx: " + signature.slice(0, 8) + "...", "success");
     stakeInfo = null;
     await loadUserData();
 
   } catch (err) {
     console.error("Unstake error:", err);
     const msg = err.message || "";
-    if (msg.includes("StakingLockActive"))  showToast("🔒 Lock period not finished yet", "error");
+    if (msg.includes("StakingLockActive"))  showToast(" Lock period not finished yet", "error");
     else if (msg.includes("NotStaked"))     showToast("No active stake found", "error");
     else if (msg.includes("No $FLAME"))     showToast("No $FLAME token account found", "error");
     else if (msg.includes("rejected") || msg.includes("User rejected"))
