@@ -3,10 +3,10 @@
 // ============================================================
 console.log("JS LOADED");
 
-const PROGRAM_ID = "AxiQZyf8GxoPNWoaaCPWU126KFLtSWgy3iKRudUWq5NE";
+const PROGRAM_ID = "BavvMbqKcVUWMQBwHx6xegULGDvmiRWfX2C9NtyZYqWP";
 const NETWORK    = "https://api.devnet.solana.com"; // swap to mainnet-beta when ready
 const TOKEN_DECIMALS = 9;
-const FLAME_MINT = "8DgVAZ57ccbw17goQn63mr9or2FuGamgkzokPKMrZgic";
+const FLAME_MINT = "5GduPf4TC5JniwLni8t414fmCzdvo8KdFYSswd8ZypJA";
 
 const TOKEN_PROGRAM_ID  = new solanaWeb3.PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
 const SPL_ATA_PROGRAM   = new solanaWeb3.PublicKey("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJe1bUs");
@@ -93,7 +93,7 @@ function calcReward(amount, apyPct, days) {
 function writeU64LE(value) {
   const buf = new Uint8Array(8);
   const view = new DataView(buf.buffer);
-  view.setBigUint64(0, BigInt(value), true); // true = little-endian
+  view.setBigUint64(0, BigInt(value), true);
   return buf;
 }
 
@@ -517,7 +517,7 @@ window.addEventListener("load", async () => {
     await loadUserData();
     updateStakeButton();
   } catch {
-    // Not previously approved — do nothing, wait for user to click
+
   }
 });
 
