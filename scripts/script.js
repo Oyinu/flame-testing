@@ -95,13 +95,26 @@ FAQS.forEach((f, i) => {
 
   const audio = document.getElementById("myAudio");
 
-  function toggleAudio() {
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
+function toggleAudio() {
+  const audio = document.getElementById("myAudio");
+  const icon = document.getElementById("audioIcon");
+  const label = document.getElementById("audioLabel");
+
+  if (audio.paused) {
+    audio.play();
+    icon.className = "bx bx-pause";
+    label.textContent = "PAUSE ANTHEM 🔥";
+  } else {
+    audio.pause();
+    icon.className = "bx bx-play";
+    label.textContent = "PLAY ANTHEM 🔥";
   }
+}
+
+audio.addEventListener("ended", () => {
+  document.getElementById("audioIcon").className = "bx bx-play";
+  document.getElementById("audioLabel").textContent = "PLAY ANTHEM 🔥";
+});
 
 
 // ── Wallet register ──

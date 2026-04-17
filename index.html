@@ -42,14 +42,6 @@
             </ul>
         </div>
         <div class="nav-actions">
-            <audio id="myAudio" autoplay loop hidden>
-                <source src="./assets/flame-anthem.mp3" type="audio/mpeg">
-            </audio>
-
-            <button onclick="toggleAudio()" class="audio-btn">
-                <i class="bx bx-volume-full" style="color: #FF6A00;"></i>
-            </button>
-
             <div class="stake-button">
                 <button><a href="./coming-soon/staking-cs.html">Stake Now!</a></button>
             </div>
@@ -86,6 +78,17 @@
                 <div class="stat-val">SOL</div>
             </div>
         </div>
+     <div style="border: 1px solid #FF6A00; display: flex; align-items: center; gap: 12px; padding: .5rem 1.2rem; border-radius: 10px; cursor: pointer;" onclick="toggleAudio()">
+    <audio id="myAudio">
+        <source src="./assets/flame-anthem.mp3" type="audio/mpeg">
+    </audio>
+    <button class="audio-btn" id="audioBtn" style="background:none; border:none; cursor:pointer; padding:0; display:flex; align-items:center;">
+        <i class="bx bx-play" id="audioIcon" style="color:#FF6A00; font-size:22px;"></i>
+    </button>
+    <p style="font-family: 'Cinzel Decorative', serif; margin:0; color:#FF6A00; font-size:13px;" id="audioLabel">PLAY ANTHEM 🔥</p>
+</div>
+       
+
         <!-- Manifesto Section -->
         <div class="manifesto-section">
             <div class="divider"></div>
