@@ -602,116 +602,22 @@ button {
 .mv{
      border-top: 1px solid var(--border);
 }
+.main-mv {
+    justify-content: center;
+    align-items: center;
+}
 .mv-image, .mv-image2{
-    max-width: 100%;
-    margin-top: 4rem;
-
+    max-width: 420px;
+    width: 100%;
+    margin: 2rem auto 0;
+    display: flex;
+    justify-content: center;
 }
 .mv-image img, .mv-image2 img{
-    width:100%;
-
-transform: rotate(-5deg);
-box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    
-}
-.mv-container{
-  padding: 4rem 2rem;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-left: 15%;
-}
-.mission, .vision{
-    align-items: center;
-    align-content: center;
-    gap: 3rem;
-    background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 2rem;
-}
-.mission h2, .vision h2{
-     color: var(--orange);
- text-align: center;
-     padding: 1rem 0;
-}
-/* ── HOW IT WORKS ── */
-.hiw-section {
-  background: linear-gradient(
-    180deg,
-    #0d0600,
-    #110800 40%,
-    #110800 60%,
-    #0d0600
-  );
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.hiw-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-.hiw-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 36px 24px;
-  text-align: center;
-  transition:
-    border-color 0.3s,
-    transform 0.3s,
-    box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-  animation: fadeUp 0.6s ease-out both;
-}
-.hiw-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 110%,
-    rgba(255, 69, 0, 0.07),
-    transparent 70%
-  );
-  pointer-events: none;
-}
-.hiw-card:hover {
-  border-color: var(--orange);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 32px rgba(255, 69, 0, 0.15);
-}
-.hiw-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--orange), #8b0000);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  margin: 0 auto 18px;
-}
-.hiw-step {
-  font-family: var(--fu);
-  font-size: 10px;
-  color: var(--orange);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.hiw-title {
-  font-size: 19px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
-}
-.hiw-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.65;
+    width: 100%;
+    display: block;
+    transform: rotate(-5deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* ── TOKENOMICS ── */
@@ -1557,18 +1463,17 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   }
  
   .mv-image {
+    display: flex !important;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .mv-image2 {
     display: none !important;
   }
- 
-  .mv-image2 {
-    display: block !important;
-    max-width: 100%;
-    margin: 0 auto 0;
-    text-align: center;
-  }
- 
-  .mv-image2 img {
-    width: 70%;
+
+  .mv-image img {
+    width: 100%;
     margin: 0 auto;
     transform: rotate(-3deg);
   }
