@@ -25,10 +25,7 @@ for (let i = 0; i < 18; i++) {
 
 // ── FAQ ──
 const FAQS = [
-    {
-    q: "What is Bright Flame?",
-    a: "Bright Flame is a purpose-driven digital asset project combining decentralized finance with real-world impact, supporting orphans, widows, and underserved communities.",
-  },
+  
   {
     q: "What is $FLAME?",
     a: "$FLAME is a community-driven utility token on Solana built around scarcity, staking rewards, and early-mover incentives. It is designed for those who want to get in before the fire spreads.",
@@ -85,4 +82,23 @@ function registerWallet() {
   document.getElementById("wallet-success").style.display = "block";
   document.getElementById("wallet-input").style.display = "none";
   document.querySelector(".reg-row .btn-primary").style.display = "none";
+}
+
+// ── Early Investor Copy Address ──
+function copyFlameAddress(btn) {
+  const address = "DQZnq352EEDk1gJubwkkoRkgYYWFzDGo4bnfRa8TRUwW";
+  navigator.clipboard.writeText(address).then(() => {
+    const label = document.getElementById("earlyInvLabel");
+    const icon = document.getElementById("copyIcon");
+    label.textContent = "Address Copied! 🔥";
+    icon.className = "bx bx-check";
+    btn.style.borderColor = "#FF6A00";
+    btn.style.color = "#FF6A00";
+    setTimeout(() => {
+      label.textContent = "Early Investor — Copy Address";
+      icon.className = "bx bx-copy";
+      btn.style.borderColor = "";
+      btn.style.color = "";
+    }, 2500);
+  });
 }
